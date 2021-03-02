@@ -2,40 +2,55 @@ defmodule RedixCluster.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :redix_cluster,
-     version: "0.0.1",
-     elixir: "~> 1.1",
-     build_embedded: Mix.env in [:prod],
-     start_permanent: Mix.env == :prod,
-     preferred_cli_env: [espec: :test],
-     deps: deps]
-  end
-
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
-  def application do
-    [mod: {RedixCluster, []},
-    applications: [:logger, :redix]]
-  end
-
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
-  defp deps do
-    [ {:redix, "~> 0.3.1"},
-      {:poolboy, "~> 1.5", override: true},
-      {:dialyze, "~> 0.2", only: :dev},
-      {:dogma, "~> 0.0", only: :dev},
-      {:benchfella, github: "alco/benchfella", only: :bench},
-      {:eredis_cluster, github: "adrienmo/eredis_cluster", only: :bench},
-      {:espec, github: "antonmi/espec", only: :test},
+    [
+      app: :redix_cluster_remastered,
+      version: "1.2.1",
+      elixir: "~> 1.6",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      deps: deps(),
+      package: package(),
+      name: "RedixCluster",
+      source_url: "https://github.com/SpotIM/redix-cluster",
+      elixirc_paths: elixirc_paths(Mix.env()),
+      # The main page in the docs
+      docs: [main: "RedixCluster", extras: ["README.md"]],
+      dialyzer: [plt_add_deps: :project]
     ]
   end
+
+  def application do
+    [
+      extra_applications: applications(Mix.env())
+    ]
+  end
+
+  defp applications(:dev), do: applications(:all) ++ [:remixed_remix]
+  defp applications(_all), do: [:logger, :runtime_tools]
+
+  defp deps do
+    [
+      {:redix, ">= 0.0.0"},
+      {:poolboy, "~> 1.5"},
+      # Necessary for dev and test
+      {:ex_doc, "~> 0.18.0", only: :dev},
+      {:credo, ">= 0.3.0", only: [:dev, :test]},
+      {:remixed_remix, "~> 1.0.0", only: :dev}
+    ]
+  end
+
+  defp package do
+    [
+      description:
+        "A client for managing the connection to a Redis Cluster using Redix as a client.",
+      # These are the default files included in the package
+      files: ["lib", "mix.exs", "README.md"],
+      maintainers: ["Coby Benveniste"],
+      links: %{"GitHub" => "https://github.com/SpotIM/redix-cluster"},
+      licenses: ["MIT License"]
+    ]
+  end
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
 end

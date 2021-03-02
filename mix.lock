@@ -1,12 +1,10 @@
-%{"benchfella": {:git, "https://github.com/alco/benchfella.git", "ddf53d16472b2dfec55066e366a70035181533cb", []},
-  "connection": {:hex, :connection, "1.0.2"},
-  "dialyze": {:hex, :dialyze, "0.2.0"},
-  "dogma": {:hex, :dogma, "0.0.11"},
-  "eredis": {:git, "https://github.com/wooga/eredis.git", "cbc013f516e464706493c01662e5e9dd82d1db01", [tag: "v1.0.8"]},
-  "eredis_cluster": {:git, "https://github.com/adrienmo/eredis_cluster.git", "59d82059d14add2c24b2243084ab89165d3b1953", []},
-  "espec": {:git, "https://github.com/antonmi/espec.git", "3b2dd8acec2b78c19e51f0a892f3e0b68614c68f", []},
-  "ex_doc": {:hex, :ex_doc, "0.11.1"},
-  "meck": {:hex, :meck, "0.8.3"},
-  "poison": {:hex, :poison, "1.5.0"},
-  "poolboy": {:hex, :poolboy, "1.5.1"},
-  "redix": {:hex, :redix, "0.3.1"}}
+%{
+  "bunt": {:hex, :bunt, "0.2.0", "951c6e801e8b1d2cbe58ebbd3e616a869061ddadcc4863d0a2182541acae9a38", [:mix], [], "hexpm"},
+  "credo": {:hex, :credo, "1.0.0", "aaa40fdd0543a0cf8080e8c5949d8c25f0a24e4fc8c1d83d06c388f5e5e0ea42", [:mix], [{:bunt, "~> 0.2.0", [hex: :bunt, repo: "hexpm", optional: false]}, {:jason, "~> 1.0", [hex: :jason, repo: "hexpm", optional: false]}], "hexpm"},
+  "earmark": {:hex, :earmark, "1.3.1", "73812f447f7a42358d3ba79283cfa3075a7580a3a2ed457616d6517ac3738cb9", [:mix], [], "hexpm"},
+  "ex_doc": {:hex, :ex_doc, "0.18.4", "4406b8891cecf1352f49975c6d554e62e4341ceb41b9338949077b0d4a97b949", [:mix], [{:earmark, "~> 1.1", [hex: :earmark, repo: "hexpm", optional: false]}], "hexpm"},
+  "jason": {:hex, :jason, "1.1.2", "b03dedea67a99223a2eaf9f1264ce37154564de899fd3d8b9a21b1a6fd64afe7", [:mix], [{:decimal, "~> 1.0", [hex: :decimal, repo: "hexpm", optional: true]}], "hexpm"},
+  "poolboy": {:hex, :poolboy, "1.5.1", "6b46163901cfd0a1b43d692657ed9d7e599853b3b21b95ae5ae0a777cf9b6ca8", [:rebar], [], "hexpm"},
+  "redix": {:hex, :redix, "0.9.0", "c631c921354587e054bf1e2a6b7d0120d617352fc42b624b9ca79ea484d0326c", [:mix], [], "hexpm"},
+  "remixed_remix": {:hex, :remixed_remix, "1.0.0", "1a4c4555352361d3d72fb783e6ad25e7ea5e03a8506d038533499828d3b55b9e", [:mix], [], "hexpm"},
+}

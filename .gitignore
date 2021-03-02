@@ -7,3 +7,7 @@ erl_crash.dump
 .idea
 bench/graphs
 bench/snapshots
+.elixir_ls
+dev.exs
+test.exs
+/doc
